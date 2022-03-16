@@ -22,12 +22,15 @@
     </style>
 </head>
 <body>
+
 <h1 style="color: green"> Game Ca-ro</h1>
-<button onclick="start()">Start</button>
+<button onclick="start()">START</button>
 <div id="game-board" >
 </div>
 <canvas id="myCanvas" width="564" height="564" style="background-color: lightgrey"></canvas>
 <script>
+let audi = new Audio()
+audi.src = "fly.mp3"
     let myCavas = document.getElementById('myCanvas')
     let context = myCavas.getContext("2d")
     const value_empty = 1;
@@ -50,7 +53,7 @@
                 default_cell_size+'px; left:'+
                 left+'px; top:'+
                 top+'px; line-height: '+
-                default_cell_size+'px;"></div>';
+                default_cell_size+'px;"  ></div>';
             return cellHtml;
         };
 
@@ -64,9 +67,9 @@
                 case value_O:
                     cellDiv.innerHTML = "O";
                     break;
-                // default:
-                //     cellDiv.innerHTML = "";
-                //     break;
+                default:
+                    cellDiv.innerHTML = "";
+                    break;
             }
         }
     }
@@ -91,7 +94,7 @@
                     gameBoardDiv.innerHTML += cell.getHtml();
                 }
             }
-        };
+        }
 
         this.play = function (x, y) {
             if(this.isOver) {
@@ -110,6 +113,7 @@
             } else {
                 alert("Không được đánh chèn vào");
             }
+         audi.play()
         };
 
         this.check = function (x, y) {
